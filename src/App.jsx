@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <NavBar/>
-    <div className="heroSection container d-flex justify-content-between align-items-center w-100">
+    <div className="heroSection mt-3 container d-flex justify-content-between align-items-center w-100">
       <Categories/>
       <CarouSel/>
     </div>
