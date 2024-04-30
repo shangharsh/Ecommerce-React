@@ -3,7 +3,7 @@ import CarouSel from './Carousel.jsx';
 import Categories from './Categories.jsx';
 import ProductContainer from './JustForYou.jsx';
 import BannerPng from './assets/images/Banner.jpg';
-import Button from 'react-bootstrap/button';
+import Button from 'react-bootstrap/Button';
 import Footer from './Footer.jsx';
 
 function App() {
