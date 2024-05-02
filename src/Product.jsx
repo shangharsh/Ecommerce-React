@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { MdStar } from "react-icons/md";
 import {useState, useEffect} from 'react';
@@ -7,11 +6,10 @@ import axios from 'axios';
 
 function Product() {
   const [prod, setProd] = useState();
-  const [rating, setRating] = useState();
 
 useEffect(()=>{
   getProduct();
-  // calcRating()
+  getRating();
 },[])
 
 const getProduct = async() =>{
@@ -19,19 +17,17 @@ const getProduct = async() =>{
   setProd(response.data.products);
 }
 
-// const calcRating = () => {
-//   for(let i = 0; i< rating; i++){
-//     [...setRating(1)];
-//   }
-// }
+const getRating = () =>{
 
+}
 
   return (
-    <div className='d-flex flex-wrap justify-content-between gap-3'>
+    <div className='d-flex flex-wrap justify-content-around gap-3'>
+      {console.log(prod)}
       {
         prod?.map((item, index)=>{
           return (
-            <a href="#" key={index} className='text-decoration-none'>
+            <a href={index} key={index} className='text-decoration-none'>
                 <Card style={{ width: '15rem' }} className='gap-3'>
                       <Card.Img variant="top" src={item.thumbnail} style={{
                         width: '10rem',
@@ -45,29 +41,18 @@ const getProduct = async() =>{
                             {'$'+item.price}
                           </Card.Text>
                           <Card.Text>
-                            {item.discountPercentage+'%'}
+                            {-item.discountPercentage+'%'}
                           </Card.Text>
                           </div>
                           <div className="d-flex justify-content-between align-items-center">
-                          <Card.Text className='m-0'>
+                          <Card.Text className='m-0' style={{color:'#f85606'}}>
                           {'$'+(item.price-(item.price*item.discountPercentage*0.01)).toFixed(2)}
                           </Card.Text>
                           <Card.Text>
-                            {item.rating}
-                            {/* {[...item.rating.toFixed(0)].map((star, index)=>{
-                              return (
-                                <>
-                                <MdStar key={index} />
-                                </>
-                              )
-                            })} */}
+                            <MdStar style={{color:'#f85606'}}/>
+                            ({item.rating})
+
                           </Card.Text>
-                          </div>
-                          <div className="d-flex justify-content-between align-items-center mt-2">
-                            <Button variant="primary">Add to Cart</Button>
-                            <Button variant="primary">View</Button>
-                            {/* <Button variant="light"><GiShoppingCart style={{fontSize: '25px' }}/></Button>
-                            <Button variant="light"> <ImEye/></Button> */}
                           </div>
                         </Card.Body>
                   </Card>

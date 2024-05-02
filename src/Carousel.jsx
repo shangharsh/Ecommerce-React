@@ -1,10 +1,4 @@
 import Carousel from 'react-bootstrap/Carousel';
-import Slider1 from './assets/images/Slider1.jpg'
-import Slider2 from './assets/images/Slider2.jpg'
-import Slider3 from './assets/images/Slider3.jpg'
-import Slider4 from './assets/images/Slider4.jpg'
-import Slider5 from './assets/images/Slider5.jpg'
-import Slider6 from './assets/images/Slider6.jpg'
 
 function Slider() {
   return (
@@ -13,43 +7,43 @@ function Slider() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src={Slider1}
+                    src='./Slider1.jpg'
                     alt="First slide"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img
           className="d-block w-100"
-          src={Slider2}
+          src='./Slider2.jpg'
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Slider3}
+          src='./Slider3.jpg'
           alt="Third slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Slider4}
-          alt="Third slide"
+          src='./Slider4.jpg'
+          alt="Fourth slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Slider5}
-          alt="Third slide"
+          src='./Slider5.jpg'
+          alt="Fifth slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={Slider6}
-          alt="Third slide"
+          src='./Slider6.jpg'
+          alt="Sixth slide"
         />
       </Carousel.Item>
     </Carousel>

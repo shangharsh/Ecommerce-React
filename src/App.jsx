@@ -2,7 +2,6 @@ import NavBar from './Navbar.jsx';
 import CarouSel from './Carousel.jsx';
 import Categories from './Categories.jsx';
 import ProductContainer from './JustForYou.jsx';
-import BannerPng from './assets/images/Banner.jpg';
 import Button from 'react-bootstrap/Button';
 import Footer from './Footer.jsx';
 
@@ -16,7 +15,7 @@ function App() {
       <CarouSel/>
     </div>
     <div className="banner container mt-3">
-      <img src={BannerPng} alt="Banner Image" style={{width:'100%'}}/>
+      <img src='./Banner.jpg' alt="Banner Image" style={{width:'100%'}}/>
     </div>
       <ProductContainer/>
       <div className='d-flex justify-content-center align-items-center'>
