@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const Categories = () =>{
 
@@ -29,11 +30,12 @@ const Categories = () =>{
                 {
                     uniqueCat.map((item, index)=>{
                         return (
-                            <a href={index} key={index} className='text-decoration-none'>
+                            <Link to='/searchedproduct' key={index} className='text-decoration-none'>
                                 <ListGroup.Item as="li">
                                     {item.charAt(0).toUpperCase() + item.slice(1)}
                                 </ListGroup.Item>
-                            </a>
+                            </Link>
+                                
                         )
                     })
                 }

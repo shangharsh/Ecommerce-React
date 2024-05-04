@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { MdStar } from "react-icons/md";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 function Product() {
@@ -9,16 +10,12 @@ function Product() {
 
 useEffect(()=>{
   getProduct();
-  getRating();
+  // getRating();
 },[])
 
 const getProduct = async() =>{
   const response = await axios.get('https://dummyjson.com/products');
   setProd(response.data.products);
-}
-
-const getRating = () =>{
-
 }
 
   return (
@@ -27,7 +24,7 @@ const getRating = () =>{
       {
         prod?.map((item, index)=>{
           return (
-            <a href={index} key={index} className='text-decoration-none'>
+            <Link to='/productdetails' key={index} className='text-decoration-none'>
                 <Card style={{ width: '15rem' }} className='gap-3'>
                       <Card.Img variant="top" src={item.thumbnail} style={{
                         width: '10rem',
@@ -56,7 +53,7 @@ const getRating = () =>{
                           </div>
                         </Card.Body>
                   </Card>
-            </a>
+            </Link>
                   )})}
     </div>
   );

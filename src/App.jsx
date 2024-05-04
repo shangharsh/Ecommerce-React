@@ -1,27 +1,27 @@
-import NavBar from './Navbar.jsx';
-import CarouSel from './Carousel.jsx';
-import Categories from './Categories.jsx';
-import ProductContainer from './JustForYou.jsx';
-import Button from 'react-bootstrap/Button';
-import Footer from './Footer.jsx';
+import NavBar from './components/Header.jsx';
+import {Routes, Route} from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import Addtocart from './pages/Addtocart.jsx';
+import Searchedproduct from './pages/Searchedproduct.jsx';
+import Productdetails from './pages/Productdetails.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
 
   return (
     <>
     <NavBar/>
-    <div className="heroSection mt-3 container d-flex justify-content-between align-items-center w-100">
-      <Categories/>
-      <CarouSel/>
-    </div>
-    <div className="banner container mt-3">
-      <img src='./Banner.jpg' alt="Banner Image" style={{width:'100%'}}/>
-    </div>
-      <ProductContainer/>
-      <div className='d-flex justify-content-center align-items-center'>
-      <Button variant="outline-success" className='mt-3' style={{width: '400px'}}>Load More</Button>
-      </div>
-      <Footer/>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/login' element={<Login/>} />
+      <Route path='/register' element={<Register/>} />
+      <Route path='/addtocart' element={<Addtocart/>} />
+      <Route path='/searchedproduct' element={<Searchedproduct/>} />
+      <Route path='/productdetails' element={<Productdetails/>} />
+    </Routes>
+    <Footer/>
     </>
   )
 }
