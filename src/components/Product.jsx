@@ -10,7 +10,6 @@ function Product() {
 
 useEffect(()=>{
   getProduct();
-  // getRating();
 },[])
 
 const getProduct = async() =>{
@@ -20,7 +19,7 @@ const getProduct = async() =>{
 
   return (
     <div className='d-flex flex-wrap justify-content-around gap-3'>
-      {console.log(prod)}
+      {/* {console.log(prod)} */}
       {
         prod?.map((item, index)=>{
           return (
@@ -31,7 +30,7 @@ const getProduct = async() =>{
                         height: '8rem'}} className='mx-auto'/>
                         <Card.Body>
                           <Card.Title>{
-                          item.title.length>17? item.title.slice(0,17)+'..':item.title
+                          item.title.length>17? item.title.slice(0,17)+'..':item.title.charAt(0).toUpperCase() + item.title.slice(1)
                           }</Card.Title>
                           <div className="d-flex justify-content-between align-items-center text-secondary">
                           <Card.Text className='m-0 text-decoration-line-through'>
@@ -51,6 +50,7 @@ const getProduct = async() =>{
 
                           </Card.Text>
                           </div>
+                          <p>{item.brand}</p>
                         </Card.Body>
                   </Card>
             </Link>
