@@ -11,7 +11,7 @@ function Header() {
     <Navbar expand="lg" className="" style={{backgroundColor:'#f85606'}} >
       <Container>
           <Link to='/'>
-            <img src='./logo.png' alt="logo" width={100}/>
+            <img src='logo.png' alt="logo" width={100}/>
           </Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

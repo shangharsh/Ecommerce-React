@@ -19,11 +19,11 @@ const getProduct = async() =>{
 
   return (
     <div className='d-flex flex-wrap justify-content-around gap-3'>
-      {/* {console.log(prod)} */}
+      {console.log(prod)}
       {
         prod?.map((item, index)=>{
           return (
-            <Link to='/productdetails' key={index} className='text-decoration-none'>
+            <Link to={'/productdetails/'+ item.id} key={index} className='text-decoration-none'>
                 <Card style={{ width: '15rem' }} className='gap-3'>
                       <Card.Img variant="top" src={item.thumbnail} style={{
                         width: '10rem',

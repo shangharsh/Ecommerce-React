@@ -19,7 +19,7 @@ function App() {
       <Route path='/register' element={<Register/>} />
       <Route path='/addtocart' element={<Addtocart/>} />
       <Route path='/searchedproduct' element={<Searchedproduct/>} />
-      <Route path='/productdetails' element={<Productdetails/>} />
+      <Route path='/productdetails/:id' element={<Productdetails/>} />
     </Routes>
     <Footer/>
     </>
