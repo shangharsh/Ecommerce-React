@@ -20,6 +20,7 @@ function App() {
       <Route path='/addtocart' element={<Addtocart/>} />
       <Route path='/searchedproduct' element={<Searchedproduct/>} />
       <Route path='/productdetails/:id' element={<Productdetails/>} />
+      <Route path='/addtocart' element={<Addtocart/>}/>
     </Routes>
     <Footer/>
     </>

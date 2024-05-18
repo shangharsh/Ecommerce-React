@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Categories = () =>{
 
     const [cat, setCat] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         getCategories();
     },[]);
@@ -14,6 +15,7 @@ const Categories = () =>{
     const getCategories = async() =>{
         const {data} = await axios.get('https://dummyjson.com/products');
         setCat(data.products);
+        setIsLoading(false);
     }
 
     const categories = cat?.map((item,index)=>{
@@ -26,7 +28,9 @@ const Categories = () =>{
     
     return (
         <Card style={{width: '20%'}} className='rounded-1'>
-            <ListGroup as="ul">
+            {
+                isLoading?<p>Loading...</p>:(
+                    <ListGroup as="ul">
                 {
                     uniqueCat.map((item, index)=>{
                         return (
@@ -40,6 +44,8 @@ const Categories = () =>{
                     })
                 }
             </ListGroup>
+                )
+            }
         </Card>
     )
 }
