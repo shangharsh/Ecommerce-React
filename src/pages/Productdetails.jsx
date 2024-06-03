@@ -10,7 +10,7 @@ import { PiKeyReturnFill } from "react-icons/pi";
 import { GiHazardSign } from "react-icons/gi";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 const Productdetails = () => {
@@ -64,7 +64,7 @@ const Productdetails = () => {
                   cart[existingProductIndex].quantity +=1;
                 }
                 else{
-                  cart.push({...item, quantity:1});
+                  cart.push({...item, quantity:count}); 
                 }
                 localStorage.setItem('cart', JSON.stringify(cart));
                 alert(`${item.title} added to your cart!!`);
@@ -108,7 +108,6 @@ const Productdetails = () => {
             </div>
           </Card.Footer>
         </Card>
-        // <h1>hello</h1>
       )
       }
     })}

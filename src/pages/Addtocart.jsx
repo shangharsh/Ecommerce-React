@@ -17,6 +17,7 @@ const Addtocart = () => {
         {cart.length>0?cart.map((item, index)=>{
           return (
             <Card className='w-75 d-flex flex-row mb-2' key={index}>
+              
           <Card.Header className='d-flex justify-content-center align-items-center bg-white'>
             <Card.Img variant='left' src={item.thumbnail} width={'100px'}/>
             <div className="itemName ms-5">
@@ -36,10 +37,10 @@ const Addtocart = () => {
             <Card.Text className='m-0 me-4' style={{color:'#f85606'}}>{(((item.price-(item.price*item.discountPercentage*0.01))*(item.quantity)).toFixed(2))}</Card.Text>
             <Button className='btn btn-light rounded-circle' onClick={()=>{
               // alert("Clicked");
-                const newCart = cart.filter(product => product.id !== item.id);
+                let newCart = cart.filter(product => product.id !== item.id);
                 setCart(newCart);
                 localStorage.setItem('cart', JSON.stringify(newCart));
-                alert('Item has been removed from your cart!');
+                alert(newCart);
             }}>X</Button>
           </Card.Footer>
           </Card>

@@ -22,7 +22,7 @@ function Header() {
           >
             <Link to='/login' className='d-flex justify-content-between align-items-center text-white text-decoration-none'>Login</Link>
             <span className='ms-2 me-2 text-white d-flex justify-content-between align-items-center'>|</span>
-            <Link to='/register' className='d-flex justify-content-between align-items-center text-white text-decoration-none'>Sign Up</Link>
+            <Link to='/register' className='d-flex justify-content-between align-items-center text-white text-decoration-none'>Register</Link>
             <span className='ms-2 me-2 text-white d-flex justify-content-between align-items-center'>|</span>
             <Link to='/addtocart' className=' text-white text-decoration-none me-2'>
                 <GiShoppingCart style={{ fontSize: '36px' }}/>
