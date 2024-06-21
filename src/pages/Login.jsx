@@ -5,19 +5,24 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Login = () => {
 
   const email = useRef();
   const password = useRef();
   const [users, setUsers] = useState();
+  const [login, setLogin] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   const userDetails =  localStorage.getItem('userDetails');
-  //  console.log(u);
-  setUsers(userDetails);
+   const userDetails =  JSON.parse(localStorage.getItem('userDetails'));
+   if (userDetails) {
+    
+     setUsers(userDetails);
+   }
+   
+  //  console.log(userDetails);
 };
 return (
   <div>
@@ -71,6 +76,22 @@ return (
       </Row>
     </Form>
 
+    {
+      // console.log(users)
+      users?.map((item, index)=>{
+          if (email.current.value == item['userName'] && password.current.value == item['userPassword']) {
+            return (
+            <div key={index}>
+              {setLogin(true)}
+              <Navigate key={index} to='/'/>
+            </div>
+            )
+            // {alert("Login Success")}
+          }
+          
+          // alert(item)
+       })
+    }
       </Card>
     </div>
   )

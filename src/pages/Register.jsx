@@ -1,32 +1,26 @@
 import { Card } from "react-bootstrap"
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 const Register = () => {
-  const fName = useRef();
-  const lName = useRef();
-  const uAddress = useRef();
-  const userPassword = useRef();
-  const userEmail = useRef();
-const [users, setUsers] = useState([]);
-const handleSubmit = (e) => {
+const navigate = useNavigate()
+const [input, setInput] = useState({
+  fName: "",
+  lName: "",
+  uAddress: "",
+  uEmail: "",
+  uPassword: ""
+})
+const handleRegister = (e) => {
   e.preventDefault();
-  let item = {
-    fName:fName.current.value,
-    lName:lName.current.value,
-    uAddress:uAddress.current.value,
-    userName:userEmail.current.value,
-    userPassword:userPassword.current.value
-  };
-  setUsers(prevUsers => [...prevUsers, item]);
-  let userDetails = JSON.parse(localStorage.getItem('userDetails'))||[];
-  userDetails.push({...item});
-  localStorage.setItem('userDetails', JSON.stringify(userDetails));
+  localStorage.setItem("users", JSON.stringify(input))
+  alert("User Register Successfully.")
+  navigate("/login")
 }
 
   return (
@@ -34,7 +28,7 @@ const handleSubmit = (e) => {
       {/* {console.log(users)} */}
       <h4 className="text-center mt-3">Please Fill the form to Register</h4>
       <Card className="container mt-4 w-75">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleRegister}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
@@ -43,7 +37,12 @@ const handleSubmit = (e) => {
             type="text"
             placeholder="First name"
             // defaultValue="Mark"
-            ref={fName}
+            name= "fName"
+            value={input.fName}
+            onChange={(e)=> setInput({
+              ...input,
+              [e.target.name]: e.target.value,
+            })}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -54,7 +53,12 @@ const handleSubmit = (e) => {
             type="text"
             placeholder="Last name"
             // defaultValue="Otto"
-            ref={lName}
+            name="lName"
+            value={input.lName}
+            onChange={(e)=>setInput({
+              ...input,
+              [e.target.name]: e.target.value,
+            })}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -64,8 +68,12 @@ const handleSubmit = (e) => {
             required
             type="text"
             placeholder="Address Here"
-            // defaultValue="Otto"
-            ref={uAddress}
+            name="uAddress"
+            value={input.uAddress}
+            onChange={(e)=>setInput({
+              ...input,
+              [e.target.name]: e.target.value,
+            })}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
@@ -79,7 +87,12 @@ const handleSubmit = (e) => {
               type="text"
               placeholder="Email"
               aria-describedby="inputGroupPrepend"
-              ref={userEmail}
+              name="uEmail"
+              value={input.uEmail}
+              onChange={(e)=>setInput({
+                ...input,
+                [e.target.name]: e.target.value,
+              })}
               required
             />
             <Form.Control.Feedback type="invalid">
@@ -95,7 +108,12 @@ const handleSubmit = (e) => {
               type="text"
               placeholder="Password"
               aria-describedby="inputGroupPrepend"
-              ref={userPassword}
+              name="uPassword"
+              value={input.uPassword}
+              onChange={(e)=> setInput({
+                ...input,
+                [e.target.name]: e.target.value, 
+              })}
               required
             />
             <Form.Control.Feedback type="invalid">
