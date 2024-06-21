@@ -12,9 +12,9 @@ const navigate = useNavigate()
 const [input, setInput] = useState({
   fName: "",
   lName: "",
-  uAddress: "",
-  uEmail: "",
-  uPassword: ""
+  address: "",
+  email: "",
+  password: ""
 })
 const handleRegister = (e) => {
   e.preventDefault();
@@ -25,7 +25,6 @@ const handleRegister = (e) => {
 
   return (
     <div>
-      {/* {console.log(users)} */}
       <h4 className="text-center mt-3">Please Fill the form to Register</h4>
       <Card className="container mt-4 w-75">
       <Form onSubmit={handleRegister}>
@@ -36,7 +35,6 @@ const handleRegister = (e) => {
             required
             type="text"
             placeholder="First name"
-            // defaultValue="Mark"
             name= "fName"
             value={input.fName}
             onChange={(e)=> setInput({
@@ -52,7 +50,6 @@ const handleRegister = (e) => {
             required
             type="text"
             placeholder="Last name"
-            // defaultValue="Otto"
             name="lName"
             value={input.lName}
             onChange={(e)=>setInput({
@@ -68,7 +65,7 @@ const handleRegister = (e) => {
             required
             type="text"
             placeholder="Address Here"
-            name="uAddress"
+            name="address"
             value={input.uAddress}
             onChange={(e)=>setInput({
               ...input,
@@ -87,7 +84,7 @@ const handleRegister = (e) => {
               type="text"
               placeholder="Email"
               aria-describedby="inputGroupPrepend"
-              name="uEmail"
+              name="email"
               value={input.uEmail}
               onChange={(e)=>setInput({
                 ...input,
@@ -108,7 +105,7 @@ const handleRegister = (e) => {
               type="text"
               placeholder="Password"
               aria-describedby="inputGroupPrepend"
-              name="uPassword"
+              name="password"
               value={input.uPassword}
               onChange={(e)=> setInput({
                 ...input,

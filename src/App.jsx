@@ -7,6 +7,7 @@ import Addtocart from './pages/Addtocart.jsx';
 import Searchedproduct from './pages/Searchedproduct.jsx';
 import Productdetails from './pages/Productdetails.jsx';
 import Footer from './components/Footer.jsx';
+import SecureRoute from './services/SecureRoute.jsx';
 
 function App() {
 
@@ -17,10 +18,11 @@ function App() {
       <Route path='/' element={<Home/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Register/>} />
-      <Route path='/addtocart' element={<Addtocart/>} />
+      <Route path='/addtocart' element={<SecureRoute/>}>
+        <Route path='/addtocart' element={<Addtocart/>}/>
+      </Route>
       <Route path='/searchedproduct' element={<Searchedproduct/>} />
       <Route path='/productdetails/:id' element={<Productdetails/>} />
-      <Route path='/addtocart' element={<Addtocart/>}/>
     </Routes>
     <Footer/>
     </>
