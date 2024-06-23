@@ -14,17 +14,28 @@ const [input, setInput] = useState({
   password: "",
 })
 
+
+
   const handleLogin = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const loggedUser = JSON.parse(localStorage.getItem("users"))
-    if(input.email === loggedUser.email && input.password === loggedUser.password ){
-      localStorage.setItem("loggedIn", true)
-      navigate("/")
-      alert("Logged In")
-    }else{
-      alert("Wrong Email or Password.")
+    const checkLogin = () => {
+      if(input.email == "" && input.password == ""){
+        alert("Email or Password cannot be empty")
+      }else if(input.email === loggedUser.email && input.password === loggedUser.password){
+        localStorage.setItem("loggedIn", true)
+        navigate("/")
+        alert("Logged In")
+      }else{
+        alert("Wrong Email or Password.")
+      }
     }
-  
+    const toRegister = () => {
+      alert("Register First")
+      navigate("/register")
+    }
+    loggedUser?checkLogin():toRegister()
+    
 }
 return (
   <div>

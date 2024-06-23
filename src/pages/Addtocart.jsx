@@ -28,10 +28,8 @@ const Addtocart = () => {
           <Card.Body className='d-flex justify-content-center align-items-center'>
           <Card.Text style={{color:'#f85606'}} className='m-0 me-4'>{item.price}$ <span className='text-secondary'>(-{item.discountPercentage}%)</span></Card.Text>
           <div className="d-flex justify-content-between align-items-center" style={{width:'100px'}}>
-                <Button variant='light' onClick={() => setCount(item.quantity-1)}>-</Button>
-                <Card.Text className='m-0'>{item.quantity}</Card.Text>
-                <Button variant='light' onClick={() => setCount(item.quantity+1)}>+</Button>
-              </div>
+            <Card.Text className='m-0 d-flex flex-row'> {item.quantity}</Card.Text>
+          </div>
           </Card.Body>
           <Card.Footer className='d-flex justify-content-center align-items-center bg-white'>
             <Card.Text className='m-0 me-4' style={{color:'#f85606'}}>{(((item.price-(item.price*item.discountPercentage*0.01))*(item.quantity)).toFixed(2))}</Card.Text>

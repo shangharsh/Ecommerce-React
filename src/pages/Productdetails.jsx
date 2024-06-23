@@ -8,12 +8,15 @@ import { BsCashCoin } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { PiKeyReturnFill } from "react-icons/pi";
 import { GiHazardSign } from "react-icons/gi";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 
 const Productdetails = () => {
+  const isLoggedIn = JSON.parse(localStorage.getItem("loggedIn"))
+  const navigate = useNavigate()
+
   const [activeProd, setActiveProd] = useState();
   const [count, setCount] = useState(1);
   const {id} = useParams();
@@ -24,6 +27,7 @@ const Productdetails = () => {
     const response = await axios.get('https://dummyjson.com/products');
     setActiveProd(response.data.products);
   }
+  
   return (
     <>
     {activeProd?.map((item, index)=>{
@@ -58,16 +62,23 @@ const Productdetails = () => {
             <div className="btnContainer d-flex justify-content-between align-items-center">
               <Button variant='info' className='text-white w-50 p-2 me-3'>Buy Now</Button>
               <Button className='w-50 p-2 border-0' style={{backgroundColor:'#f85606'}} onClick={()=>{
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const existingProductIndex = cart.findIndex(product=>product.id === item.id);
+                if(isLoggedIn){
+                  // alert("LoggedIn User")
+                let cart = JSON.parse(localStorage.getItem('cart')) || []
+                const existingProductIndex = cart.findIndex(product=>product.id === item.id)
                 if (existingProductIndex !=-1) {
                   cart[existingProductIndex].quantity +=1;
                 }
                 else{
-                  cart.push({...item, quantity:count}); 
+                  cart.push({...item, quantity:count})
                 }
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`${item.title} added to your cart!!`);
+                localStorage.setItem('cart', JSON.stringify(cart))
+                alert(`${item.title} added to your cart!!`)
+              }
+              else{
+                (alert("Please Login First"))
+                navigate("/login")
+              }
               }}
               >Add to Cart</Button>
             </div>
